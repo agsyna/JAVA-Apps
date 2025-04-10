@@ -22,6 +22,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -60,10 +62,16 @@ public class MainActivity extends AppCompatActivity {
         fromSpinner.setAdapter(adapter);
         toSpinner.setAdapter(adapter);
 
+
+        LottieAnimationView bottomBarAnimation = findViewById(R.id.bottomBarAnimation);
+        bottomBarAnimation.setAnimation(R.raw.bottombar);
+        bottomBarAnimation.playAnimation();
+
         setting.setOnClickListener(
                 v->
-                NavigateToSetting()
+                        NavigateToSetting(bottomBarAnimation)
         );
+
 
 
 
@@ -74,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
-    public void NavigateToSetting (){
+
+    public void NavigateToSetting (LottieAnimationView bottomBarAnimation){
+        bottomBarAnimation.pauseAnimation();
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
     }

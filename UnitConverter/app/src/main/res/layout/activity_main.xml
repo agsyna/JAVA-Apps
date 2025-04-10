@@ -26,6 +26,7 @@
     </ImageButton>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/maincard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -149,5 +150,19 @@
                 />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/bottomBarAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        app:lottie_fileName="@raw/theme"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="false"
+        app:lottie_speed="1.0"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/maincard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

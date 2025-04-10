@@ -17,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import android. view. MenuItem;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -25,6 +27,9 @@ public class SettingsActivity extends AppCompatActivity {
     private ToggleButton toggle;
     private static final String PREFS_NAME = "theme_prefs";
     private static final String KEY_IS_DARK = "is_dark";
+
+    boolean isDarkMode = false;
+
 
 
     @Override
@@ -41,6 +46,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
 
         setSupportActionBar(toolbar);
 
@@ -64,6 +70,10 @@ public class SettingsActivity extends AppCompatActivity {
         themeText = findViewById(R.id.themetext);
         themeText.setText(isDark ? "Dark Theme" : "Light Theme");
 
+//        LottieAnimationView themeAnimation = findViewById(R.id.themeToggle);
+//        themeAnimation.setAnimation(R.raw.theme);
+
+
         toggle.setOnClickListener(v -> {
                     boolean newState = !isDark;
                     SharedPreferences.Editor editor = prefs.edit();
@@ -75,6 +85,44 @@ public class SettingsActivity extends AppCompatActivity {
                     );
                 }
         );
+
+
+
+//        themeAnimation.setOnClickListener(v -> {
+//            if (isDarkMode) {
+//                // Play animation in reverse
+//                themeAnimation.setSpeed(-1f);
+//                themeAnimation.playAnimation();
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//            } else {
+//                // Play animation forward
+//                themeAnimation.setSpeed(1f);
+//                themeAnimation.playAnimation();
+//                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//            }
+//            isDarkMode = !isDarkMode;
+//        });
+
+//        themeAnimation.setOnClickListener(v -> {
+//                    boolean newState = !isDark;
+//                    SharedPreferences.Editor editor = prefs.edit();
+//                    editor.putBoolean(KEY_IS_DARK, newState);
+//                    editor.apply();
+//                    if (newState) {
+////                        themeAnimation.animate(0.5);?
+//                    } else {
+////                        themeAnimation.setMinAndMaxProgress(0.0f, 0.5f);
+//                    }
+//
+//                        themeAnimation.setSpeed(1f);
+//                        themeAnimation.playAnimation();
+//
+//
+//                    AppCompatDelegate.setDefaultNightMode(
+//                            newState ? AppCompatDelegate.MODE_NIGHT_YES : AppCompatDelegate.MODE_NIGHT_NO
+//                    );
+//                }
+//        );
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
