@@ -1,14 +1,23 @@
 package com.example.unitconvertor;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -18,9 +27,14 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    private boolean isDarkTheme = false;
     private Spinner fromSpinner, toSpinner;
     private EditText inputText;
     private TextView answer;
+    private ImageButton setting;
+    private Button convert_btn;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,14 +47,23 @@ public class MainActivity extends AppCompatActivity {
         toSpinner = findViewById(R.id.toUnitSpinner);
         inputText = findViewById(R.id.inputText);
         answer = findViewById(R.id.answer);
+        setting = findViewById(R.id.setting);
 
-        findViewById(R.id.convertButton).setOnClickListener(v -> convertUnits()); // v is for view that can was clicked
+
+        convert_btn = findViewById(R.id.convertButton);
+        convert_btn.setOnClickListener(v -> convertUnits()); // v is for view that can was clicked
+
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
                 this, R.array.unit_types, R.layout.spinner);
         adapter.setDropDownViewResource(R.layout.spinner);
         fromSpinner.setAdapter(adapter);
         toSpinner.setAdapter(adapter);
+
+        setting.setOnClickListener(
+                v->
+                NavigateToSetting()
+        );
 
 
 
@@ -51,6 +74,11 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
     }
+    public void NavigateToSetting (){
+        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
 
     public void convertUnits()
     {
@@ -95,4 +123,17 @@ public class MainActivity extends AppCompatActivity {
         double valueInMetre = valueInDouble * fromValue;
         return valueInMetre/toValue;
     }
+
+    public void toggleTheme() {
+        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
+        recreate();
+    }
+
 }

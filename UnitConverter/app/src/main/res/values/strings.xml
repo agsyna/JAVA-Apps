@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Unit Converter</string>
+    <string name="app_name">Unit Convertor</string>
     <string-array name="unit_types">
         <item>Foot</item>
         <item>Inch</item>
@@ -13,5 +13,8 @@
     <string name="answer">Answer</string>
     <string name="to">To</string>
     <string name="from">From</string>
+    <string name="settingDescription">Press for theme options</string>
+    <string name="theme_dark">SWITCH TO DARK</string>
+    <string name="theme_light">SWITCH TO LIGHT</string>
 
 </resources>
