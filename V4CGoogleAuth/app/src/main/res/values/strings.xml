@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">V4C (Google Auth)</string>
+    <string name="heading">Welcome back</string>
+    <string name="description">Welcome back! Please enter your details.</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signIn">Sign In</string>
+    <string name="signInGoogle">Sign in with Google</string>
+    <string name="default_web_client_id">901754908957-auhb6tmrhopfnnc5fiqa21evmriskljv.apps.googleusercontent.com</string>
+</resources>
