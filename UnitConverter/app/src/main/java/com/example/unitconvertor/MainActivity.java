@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private Button convert_btn;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
         convert_btn.setOnClickListener(v -> convertUnits()); // v is for view that can was clicked
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.unit_types, R.layout.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.unit_types, R.layout.spinner);
         adapter.setDropDownViewResource(R.layout.spinner);
         fromSpinner.setAdapter(adapter);
         toSpinner.setAdapter(adapter);
@@ -67,37 +65,29 @@ public class MainActivity extends AppCompatActivity {
         bottomBarAnimation.setAnimation(R.raw.bottombar);
         bottomBarAnimation.playAnimation();
 
-        setting.setOnClickListener(
-                v->
-                        NavigateToSetting(bottomBarAnimation)
-        );
-
-
-
-
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        setting.setOnClickListener(v -> NavigateToSetting(bottomBarAnimation));
+
     }
 
-    public void NavigateToSetting (LottieAnimationView bottomBarAnimation){
+    public void NavigateToSetting(LottieAnimationView bottomBarAnimation) {
         bottomBarAnimation.pauseAnimation();
         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
         startActivity(intent);
     }
 
 
-    public void convertUnits()
-    {
+    public void convertUnits() {
         String from = fromSpinner.getSelectedItem().toString();
         String to = toSpinner.getSelectedItem().toString();
         String value = inputText.getText().toString();
 
-        if(value.isEmpty())
-        {
+        if (value.isEmpty()) {
             Toast.makeText(this, "Please input a number", Toast.LENGTH_LONG).show();
             return;
         }
@@ -107,14 +97,9 @@ public class MainActivity extends AppCompatActivity {
         answer.setText(String.format(Locale.getDefault(), "%.4f %s", convertedValue, to));
     }
 
-    public double convert(String fromUnit, String toUnit, double valueInDouble)
-    {
+    public double convert(String fromUnit, String toUnit, double valueInDouble) {
         HashMap<String, Double> conversionMap = new HashMap<>();
-//        <item>Foot</item>
-//        <item>Inch</item>
-//        <item>Centimetre</item>
-//        <item>Metre</item>
-//        <item>Yard</item>
+//       Foot, Inch, Centimetre, Metre, Yard
         conversionMap.put("Foot", 0.3048);
         conversionMap.put("Inch", 0.0254);
         conversionMap.put("Centimetre", 0.01);
@@ -124,26 +109,25 @@ public class MainActivity extends AppCompatActivity {
         Double fromValue = conversionMap.getOrDefault(fromUnit, null);
         Double toValue = conversionMap.getOrDefault(toUnit, null);
 
-        if(fromValue == null || toValue == null)
-        {
+        if (fromValue == null || toValue == null) {
             Toast.makeText(this, "Invalid unit selection", Toast.LENGTH_LONG).show();
             return 0;
         }
 
         double valueInMetre = valueInDouble * fromValue;
-        return valueInMetre/toValue;
+        return valueInMetre / toValue;
     }
 
-    public void toggleTheme() {
-        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
-        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-        }
-
-        recreate();
-    }
+//    public void toggleTheme() {
+//        int currentNightMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+//
+//        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+//        } else {
+//            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+//        }
+//
+//        recreate();
+//    }
 
 }

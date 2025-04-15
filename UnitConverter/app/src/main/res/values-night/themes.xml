@@ -15,14 +15,25 @@
     </style>
 
 
-    <style name="ScreenBackground"> <item name="android:background">@color/black</item></style>
-    <style name="CardBackground"> <item name="android:background">@color/card_background</item></style>
-    <style name="TextColor"> <item name="android:textColor">@color/primary</item></style>
-    <style name="TextSecondaryColor"> <item name="android:textColor">@color/white</item></style>
+    <style name="ScreenBackground">
+        <item name="android:background">@color/black</item>
+    </style>
 
-<!--    <style name="SpinnerTextStyle">-->
-<!--        <item name="android:textColor">@color/white</item>-->
-<!--        <item name="android:background">@color/black</item>-->
-<!--    </style>-->
+    <style name="CardBackground">
+        <item name="android:background">@color/card_background</item>
+    </style>
+
+    <style name="TextColor">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="TextSecondaryColor">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!--    <style name="SpinnerTextStyle">-->
+    <!--        <item name="android:textColor">@color/white</item>-->
+    <!--        <item name="android:background">@color/black</item>-->
+    <!--    </style>-->
 
 </resources>

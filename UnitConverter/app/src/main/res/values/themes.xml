@@ -8,15 +8,26 @@
 
         <item name='android:statusBarColor'>@color/white</item>
 
-
-
     </style>
 
-    <style name="ScreenBackground"> <item name="android:background">@color/background_light</item></style>
-    <style name="CardBackground"> <item name="android:background">@color/background_light</item></style>
-    <style name="TextColor"> <item name="android:textColor">@color/primary</item></style>
-    <style name="TextSecondaryColor"> <item name="android:textColor">@color/black</item></style>
+    <style name="ScreenBackground">
+        <item name="android:background">@color/background_light</item>
+    </style>
+
+    <style name="CardBackground">
+        <item name="android:background">@color/background_light</item>
+    </style>
+
+    <style name="TextColor">
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="TextSecondaryColor">
+        <item name="android:textColor">@color/black</item>
+    </style>
 
 
-    <style name="ImageChange"> <item name="android:background">@color/white</item></style>
+    <style name="ImageChange">
+        <item name="android:background">@color/white</item>
+    </style>
 </resources>
